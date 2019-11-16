@@ -27,27 +27,27 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-8cfd30ba257580b315d3.js"
+    "url": "webpack-runtime-217a90f3fe0c7dc6b8b6.js"
   },
   {
-    "url": "styles.87730aa69d74025f8333.css"
+    "url": "styles.9f35a3326c6983564e15.css"
   },
   {
-    "url": "styles-ae0857ae7c8bedf33d6d.js"
+    "url": "styles-ca6bd36366cb7ecac537.js"
   },
   {
-    "url": "app-1ddf9e6571a6c090b01e.js"
+    "url": "app-22e764f052330d5c6962.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "66586200fd43d596ca1f6086d3d4a061"
+    "revision": "117f49c8fb730ccb8ad7e1e2196f3ee2"
   },
   {
-    "url": "component---node-modules-gatsby-plugin-offline-3-0-19-gatsby-plugin-offline-app-shell-js-44fdecc0fa369f670c6d.js"
+    "url": "component---node-modules-gatsby-plugin-offline-3-0-20-gatsby-plugin-offline-app-shell-js-18da33dcc459601f7c71.js"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "339191a34b66176f284c6e71d587be97"
+    "revision": "a4e455df2d5016a1dc1f55f5deab05e0"
   },
   {
     "url": "manifest.webmanifest",
@@ -57,7 +57,7 @@ self.__precacheManifest = [
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, new workbox.strategies.CacheFirst(), 'GET');
-workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, new workbox.strategies.NetworkFirst(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 
@@ -144,7 +144,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/g2plot/app-1ddf9e6571a6c090b01e.js`))) {
+  if (!resources || !(await caches.match(`/g2plot/app-22e764f052330d5c6962.js`))) {
     return await fetch(event.request)
   }
 
