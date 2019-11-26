@@ -27,27 +27,21 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-75ca25c370c1ed07bcb4.js"
+    "url": "webpack-runtime-a5f734f406f7c990668c.js"
   },
   {
-    "url": "styles.a901d4d780e990bf4d3e.css"
+    "url": "styles.7dadba1fdcd8d4643900.css"
   },
   {
-    "url": "styles-e340dd28c0a251ca4d22.js"
-  },
-  {
-    "url": "app-9157610427360fe09ec4.js"
+    "url": "app-4b4a2676ea1f4f5511f5.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "753068bdb018ab5691b9ed2ae21d186f"
-  },
-  {
-    "url": "component---node-modules-gatsby-plugin-offline-3-0-22-gatsby-plugin-offline-app-shell-js-1b5c1eb171c7b5307c60.js"
+    "revision": "c48214dd9173bf876ab54f5e58a92471"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "36759892523a3f4cbb30386a933840df"
+    "revision": "5636d5ab217f85530a92b2939e270518"
   },
   {
     "url": "manifest.webmanifest",
@@ -100,7 +94,7 @@ function handleAPIRequest({ event }) {
   const params = pathname.match(/:(.+)/)[1]
   const data = {}
 
-  if (params.indexOf(`=`) !== -1) {
+  if (params.includes(`=`)) {
     params.split(`&`).forEach(param => {
       const [key, val] = param.split(`=`)
       data[key] = val
@@ -144,7 +138,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-9157610427360fe09ec4.js`))) {
+  if (!resources || !(await caches.match(`/app-4b4a2676ea1f4f5511f5.js`))) {
     return await fetch(event.request)
   }
 
